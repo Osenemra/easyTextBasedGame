@@ -1,4 +1,4 @@
-This is a simple text-based adventure game implemented in Java. The game provides a basic storyline where the player interacts with various characters and makes choices that affect the outcome of the game.
+# This is a simple text-based adventure game implemented in Java. The game provides a basic storyline where the player interacts with various characters and makes choices that affect the outcome of the game.
 
 To run the game, execute the main method in the Game class.
 
@@ -6,7 +6,7 @@ The game starts with the player setting up their character. The player's health 
 
 The game consists of different locations or scenarios that the player can navigate through. Each location presents different options or choices for the player to select.
 
-Here is a brief overview of the game flow:
+# Here is a brief overview of the game flow:
 
 playerSetUp: This method initializes the player's HP, monster's HP, and player's weapon. It prompts the player to enter their name and displays a welcome message.
 
