@@ -1,0 +1,281 @@
+import java.util.Scanner;
+
+public class Game {
+	
+
+	
+	Scanner myScanner = new Scanner(System.in);
+	Scanner enterScanner = new Scanner(System.in);
+	
+	int choice;
+	int playerHP;
+	int monsterHP;
+	
+	String playerWepon;
+	String playerName;
+	int silverRing;
+
+	public static void main(String[] args) {
+		
+		Game game;
+		game = new Game();		
+		game.playerSetUp();
+		game.townGate();
+		
+	}
+
+	public void playerSetUp() {
+		
+		
+		
+		playerHP = 10;
+		monsterHP = 15;
+		
+		
+		playerWepon = "Bicak";
+		
+		System.out.println("Su anki Canin: "+ playerHP);
+		System.out.println("Su anki Silahin: "+ playerWepon);
+										
+		
+		
+		System.out.println("Lutfen Isminizi Giriniz:");
+		
+		playerName = myScanner.nextLine();
+		
+		System.out.println("Merhaba "+ playerName +", Haydi maceraya baslayalim!");
+		
+	}
+	public void townGate() {
+		
+		System.out.println("\n------------------------------------------------------\n");		
+		System.out.println("Suanda kasabanin kapisinin onundesin.");
+		System.out.println("Tam karsinda bir gardiyan duruyor.");
+		System.out.println("");
+		System.out.println("Ne yapmak istiyorsun?");
+		System.out.println("");
+		System.out.println("1: Gardiyan ile konus");
+		System.out.println("2: Gardiyana saldir");
+		System.out.println("3: Ayril");
+		System.out.println("\n------------------------------------------------------\n");
+			
+		
+		choice = myScanner.nextInt();
+		
+		if(choice==1) {
+			if(silverRing==1) {
+				oyunSonu();				
+			}
+			else {
+				System.out.println("Gardiyan: Merhaba yabanci... Yani senin adin "+ playerName +" oyle mi? \nKusura bakma ama yabancilari kasabamiza alamam. \nAma Prensesin kaybettigi GUMUS YUZUGU bulup bana getirirsen girebilirsin." );
+				enterScanner.nextLine();
+				townGate();
+			}
+			
+		}
+		else if(choice==2) {
+			playerHP = playerHP-1;
+			System.out.println("Gardiyan: Ne yaptigini saniyorsun!? \n\nGardiyan sana sertce vuruyor ve yalpaliyorsun.\n(1 hasar aldin)\n");
+			System.out.println("Canin: "+ playerHP);
+			enterScanner.nextLine();
+			townGate();
+		}
+		else if(choice==3) {
+			crossRoad();
+		}
+		
+		else {
+			townGate(); //farklÄ± sayÄ± yazÄ±lÄ±rsa baÅŸa dÃ¶nÃ¼yor
+		}
+		
+	}
+	
+	public void crossRoad() {
+		System.out.println("\n------------------------------------------------------\n");
+		System.out.println("Su anda bir kavsaktasin. Eger GUNEYE gidersen, kasabaya geri doneceksin\n\n");
+		System.out.println("1: Kuzeye git");
+		System.out.println("2: Doguya git");
+		System.out.println("3: Guneye git");
+		System.out.println("4: Batiya git");
+		System.out.println("\n------------------------------------------------------\n");
+		
+		choice = myScanner.nextInt();
+		
+		if(choice==1) {
+			kuzey();
+		}
+		if(choice==2) {
+			doÄŸu();
+		}
+		if(choice==3) {
+			townGate();
+		}
+		if(choice==4) {
+			batÄ±();
+		}
+		else {
+			crossRoad();
+		}
+	}
+
+	public void kuzey() {
+		System.out.println("\n------------------------------------------------------\n");
+		System.out.println("Yakininda temiz bir nehir var. Nehirden su icip agac altinda dinleniyorsun.");
+		System.out.println("Canin +1 yenilendi.");
+		playerHP = playerHP + 1;
+		System.out.println("Canin: " +playerHP);
+		System.out.println("\n\n1 e basip KAVSAGA geri don.");
+		System.out.println("\n------------------------------------------------------\n");
+		
+		choice = myScanner.nextInt();
+		
+		if(choice==1) {
+			crossRoad();
+		}
+		else {
+			kuzey();
+		}
+	}
+	
+	public void doÄŸu() {
+		System.out.println("\n------------------------------------------------------\n");
+		System.out.println("Ormanin icine dogru yuruyorsun ve yerde gardiyandan dusen keskin bir kilic buluyorsun!");
+		
+		playerWepon = "Keskin Kilic";
+		
+		System.out.println("Silahin artik: "+playerWepon);
+		System.out.println("\n\n1 e basip KAVSAGA geri don.");
+		System.out.println("\n------------------------------------------------------\n");
+		
+		choice = myScanner.nextInt();
+		
+		if(choice==1) {
+			crossRoad();
+		}
+		else {
+			kuzey();
+		}
+	}
+	
+	public void batÄ±() {
+		System.out.println("\n------------------------------------------------------\n");
+		System.out.println("Bir goblin ile karsilastin! ve goblinin elinde GUMUS YUZUK VAR!!");
+		System.out.println("1: Savas");
+		System.out.println("2: Geri Git");
+		System.out.println("\n------------------------------------------------------\n");
+		
+		choice = myScanner.nextInt();
+		
+		if(choice==1) {
+			savaÅŸ();
+		}
+		else if(choice==2) {
+		crossRoad();
+	}
+	else {
+		batÄ±();
+	}
+}
+	public void savaÅŸ() {
+		System.out.println("\n------------------------------------------------------\n");
+		System.out.println("Canin: "+playerHP);
+		System.out.println("Canavarin Cani: "+monsterHP);
+		System.out.println("\n1: Saldir");
+		System.out.println("2: Geri Git");
+		System.out.println("\n------------------------------------------------------\n");
+		
+		choice = myScanner.nextInt();
+		
+		if(choice==1) {
+			saldÄ±r();
+		}
+		if(choice==2) {
+			crossRoad();
+		}
+		else {
+			savaÅŸ();
+		}
+	}
+	
+	public void saldÄ±r() {
+		int playerDamage =0;
+		
+		
+		if(playerWepon.equals("Bicak")) {
+			playerDamage = new java.util.Random().nextInt(5);
+			
+		}
+		
+		if(playerWepon.equals("Keskin Kilic")) {
+			playerDamage = new java.util.Random().nextInt(8);
+			
+		}
+		System.out.println("Canavara saldirdin ve " +playerDamage+ " hasar verdin!");
+		
+		monsterHP = monsterHP - playerDamage;
+		
+		System.out.println("Canavarin cani: " + monsterHP);
+		
+		if(monsterHP<1) {
+			kazandÄ±n();
+		}
+		if(monsterHP>0) {
+			int monsterDamage =0;
+			
+			monsterDamage = new java.util.Random().nextInt(4);
+			
+			System.out.println("Canavar sana saldirdi ve " +monsterDamage+ " hasar verdi!");
+			
+			playerHP = playerHP - monsterDamage;
+			
+			System.out.println("Canin: " +playerHP);
+			
+			if(playerHP<1) {
+				Ã¶ldÃ¼n();
+			}
+			else if(playerHP>0) {
+				savaÅŸ();
+			}
+		}
+	}
+	
+	public void Ã¶ldÃ¼n() {
+		System.out.println("\n------------------------------------------------------\n");
+		System.out.println("!!! OLDUN !!!");
+		System.out.println("!!! OLDUN !!!");
+		System.out.println("!!! OLDUN !!!");
+		System.out.println("\n\nOYUN BITTI");
+		System.out.println("\n\nOYUN BITTI");
+		System.out.println("\n------------------------------------------------------\n");
+		
+		
+	}
+	
+	public void kazandÄ±n() {
+		System.out.println("\n------------------------------------------------------\n");
+		System.out.println("Canavari Oldurdun!");
+		System.out.println("Canavar bir yuzuk dusurdu!");
+		System.out.println("Bir GUMUS YUZUGUN oldu!\n\n");
+		System.out.println("1: Doguya git");
+		System.out.println("\n------------------------------------------------------\n");
+		
+		silverRing = 1;
+		
+		choice = myScanner.nextInt();
+		
+		if(choice==1) {
+			crossRoad();
+		}
+		else {
+			kazandÄ±n();
+		}
+	}
+	public void oyunSonu() {
+		System.out.println("\n------------------------------------------------------\n");
+		System.out.println("Gardiyan: Vay canina o goblini sen mi oldurdun!?? Etkileyici!");
+		System.out.println("Gardiyan: Boylece guvenilir birisi oldugunu kanitladin... Kasabamiza hosgeldin!! ");
+		System.out.println("\n\n              OYUN BITTI                ");
+		System.out.println("\n\n              OYUN BITTI                ");
+		System.out.println("\n------------------------------------------------------\n");
+	}
+}
